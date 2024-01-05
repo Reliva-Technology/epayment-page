@@ -36,12 +36,13 @@ if($mode == 'fpx'){
 </head>
 
 <body class="theme-light">
-<section class="section d-flex justify-content-center align-items-center mt-3">
+<section class="section mt-3 d-flex align-items-center justify-content-center">
     <div class="row">
         <div class="cols">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title text-center">Maklumat Pembayaran</h5>
+                    <p>Sila sahkan maklumat pembayaran berikut</p>
                 </div>
                 <div class="card-body">
                     <dl>
@@ -71,7 +72,7 @@ if($mode == 'fpx'){
                     </div>
                 </div>
                 <div class="card-footer">
-                    <p class="text-center">Majlis Perbandaran Manjung. Hakcipta Terpelihara &copy; <?php echo date('Y') ?></p>
+                    <p class="text-center">Hakcipta Terpelihara &copy; <?php echo date('Y') ?></p>
                     <p class="text-center"><img src="images/logo.png" title="logo" alt="logo" height="48px" class="img"></p>
                 </div>
             </div>

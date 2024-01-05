@@ -1,12 +1,12 @@
 {
     "fpx": {
-        "environment": "Production",
-        "exchange-id": "EX00004581",
-        "merchant-code": "mymanjung",
-        "url": "https://epayment.mpm.gov.my/eps/request"
+        "environment": "Staging",
+        "exchange-id": "EX00002877",
+        "merchant-code": "sandbox",
+        "url": "https://epaymentstg.melaka.gov.my/eps/request"
     },
     "stringer": {
-        "url": "https://epayment.mpm.gov.my/stringer"
+        "url": "https://epaymentstg.melaka.gov.my/stringer"
     },
     "cache": "3000",
     "callback": "https://api.mymanjung.gates.my/api/upay/payment-status"

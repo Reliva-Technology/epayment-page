@@ -28,9 +28,9 @@
                             <div class="card-body">
                                 <form method="post" action="01-mode.php" id="form-bayar">
                                 <div class="form-group row">
-                                    <label for="merchant" class="col-lg-3 col-form-label">Agensi</label>
+                                    <label for="merchant" class="col-lg-3 col-form-label">Jabatan/Agensi/Syarikat</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="merchant" value="MyManjung - Majlis Perbandaran Manjung">
+                                        <input type="text" class="form-control" name="merchant" value="">
                                     </div>
                                 </div>
 
@@ -51,7 +51,7 @@
                                 <div class="form-group row">
                                     <label for="payee_email" class="col-lg-3 col-form-label">Email Pembayar</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CUSTOMER_EMAIL" value="fadli@reliva.com.my">
+                                        <input type="text" class="form-control" name="CUSTOMER_EMAIL" value="epic@reliva.com.my">
                                     </div>
                                 </div>
 
@@ -72,12 +72,12 @@
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Keterangan</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="TXN_DESC" value="Bayaran lesen">
+                                        <input type="text" class="form-control" name="TXN_DESC" value="Bayaran pembaharuan lesen">
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <input type="hidden" name="MERCHANT_CODE" value="mymanjung">
+                                <input type="hidden" name="MERCHANT_CODE" value="sandbox">
                                 <button type="submit" class="btn btn-primary">Pembayaran</button>
                                 </form>
                             </div>

@@ -29,4 +29,8 @@ textarea, .form-control {
 
 .list-custom-small > *:last-child{
     border-bottom: none;
- }
+}
+
+.img {
+    filter:contrast(0.5);
+}
