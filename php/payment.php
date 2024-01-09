@@ -41,7 +41,6 @@ class Payment
 
             $transaction_extra = array(
                 'CUSTOMER_NAME' => $data['CUSTOMER_NAME'],
-                'CUSTOMER_ID' => $data['CUSTOMER_ID'],
                 'CUSTOMER_MOBILE' => $data['CUSTOMER_MOBILE'],
                 'CUSTOMER_EMAIL' => $data['CUSTOMER_EMAIL'],
                 'TXN_DESC' => $data['TXN_DESC']
@@ -57,7 +56,6 @@ class Payment
             ];
 
             $checksum = $encrypt->getChecksum($checksum_data);
-            $checksum = json_decode($checksum,true);
 
             $fpx_data = array(
                 'TRANS_ID' => $transaction_id,
