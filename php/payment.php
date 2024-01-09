@@ -60,9 +60,9 @@ class Payment
             $fpx_data = array(
                 'TRANS_ID' => $transaction_id,
                 'AMOUNT' => $transaction_data['amount'],
-                'PAYEE_NAME' => $transaction_extra['nama_pelanggan'],
-                'PAYEE_EMAIL' => $transaction_extra['email_pelanggan'],
-                'EMAIL' => $transaction_extra['email_pelanggan'],
+                'PAYEE_NAME' => $transaction_extra['CUSTOMER_NAME'],
+                'PAYEE_EMAIL' => $transaction_extra['CUSTOMER_EMAIL'],
+                'EMAIL' => $transaction_extra['CUSTOMER_EMAIL'],
                 'PAYMENT_MODE' => $transaction_data['payment_mode'],
                 'BANK_CODE' => $data['BANK_CODE'],
                 'BE_MESSAGE' => $data['BE_MESSAGE'],
