@@ -67,7 +67,7 @@ class Payment
                 'BANK_CODE' => $data['BANK_CODE'],
                 'BE_MESSAGE' => $data['BE_MESSAGE'],
                 'MERCHANT_CODE' => $merchant_code,
-                'CHECKSUM' => trim($checksum['checksum'])
+                'CHECKSUM' => $checksum
             );
 
             # pass to FPX controller
