@@ -126,4 +126,15 @@ class Payment
             document.getElementById('myForm').submit();
         </script>";
     }
+
+    public function response()
+    {
+        $input = $_POST;
+
+        $this->response['status'] = 'success';
+        $this->response['data'] = $input;
+        $this->response['message'] = 'Transaction has been completed. Please check STATUS, STATUS_CODE and STATUS_MESSAGE for complete details.';
+
+        echo json_encode($this->response);
+    }
 }
