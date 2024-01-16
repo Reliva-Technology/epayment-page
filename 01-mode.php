@@ -54,8 +54,8 @@ if($content_type){
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
     <title>E-Payment Sandbox</title>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="styles/custom.css">
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/styles/custom.css">
     <link
         href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap"
         rel="stylesheet">
@@ -103,8 +103,8 @@ if($content_type){
         <input type="hidden" id="payment-mode" name="payment_mode" value="">
         <?php echo $payload ?>
     </form>
-    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/jquery.min.js"></script>
     <script>
         $('.payment-mode').each(function() {
             $(this).click(function() {
