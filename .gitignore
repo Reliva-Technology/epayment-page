@@ -1,3 +1,5 @@
 vendor
 fpx/Production
 .github
+fpx/01-Staging.json
+fpx/be_message.json

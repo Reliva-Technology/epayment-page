@@ -92,4 +92,26 @@ switch ($id) {
 		return $payment->cancel($data);
 		
 	break;
+
+    case 'checksum':
+	
+		require_once('php/stringer.php');
+		$stringer = new StringerController();
+
+		$data = $_POST;
+
+		return $stringer->getChecksum($data);
+		
+	break;
+
+    default:
+        $json = [
+            'status' => '404',
+            'message' => 'No such action exist'
+        ];
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Content-type: application/json');
+        echo json_encode($json);
+    break;
 }

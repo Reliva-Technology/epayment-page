@@ -108,6 +108,7 @@ class FPX
 				'UOB0228' => 'UOB Regional',
 				'UOB0229' => 'UOB Bank - Test ID',
 				'BOCM01' => 'Bank of China',
+				'LOAD001' => 'LOAD Bank'
 			];
 
 			foreach ($bank_list as $key => $value) {
