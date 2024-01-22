@@ -1,5 +1,8 @@
 <?php
 require ('stringer.php');
+require 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
 
 class Payment
 {
@@ -129,12 +132,47 @@ class Payment
 
     public function response()
     {
+        $response = NULL;
         $input = $_POST;
+        //$input = '{"TRANS_ID":"RLVAREDLI20240119A001","PAYMENT_DATETIME":"2024-01-19 09:51:07","AMOUNT":"746.00","PAYMENT_MODE":"fpx","STATUS":"1","STATUS_CODE":"00|00","STATUS_MESSAGE":"Debit:Approved|Credit:Approved","PAYMENT_TRANS_ID":"2401190951070213","APPROVAL_CODE":"15733223","RECEIPT_NO":"SBOX240119-0000007","MERCHANT_CODE":"sandbox","MERCHANT_ORDER_NO":"2024011909510500000000000000000044","BUYER_BANK":"SBI BANK A","BUYER_NAME":"nama","CHECKSUM":"rgP5k7\/37bQQOfbdPzXM99tP5ck+QbKv+u4gEBX3SQ8RVcCrxRa2sZh62Lg9yEGD","payee_name":"Redline Trucking","payee_email":"logisticexpress@yopmail.com","email":"logisticexpress@yopmail.com","bank_code":"TEST0021","be_message":"ABB0233~A,ABB0234~A,ABMB0212~A,AGRO01~A,AMBB0209~A,BCBB0235~A,BIMB0340~A,BKRM0602~A,BMMB0341~A,BOCM01~A,BSN0601~A,CIT0219~B,HLB0224~A,HSBC0223~A,KFH0346~A,LOAD001~A,MB2U0227~A,MBB0228~A,OCBC0229~A,PBB0233~A,RHB0218~A,SCB0216~A,TEST0021~A,TEST0022~A,TEST0023~B,UOB0226~A|01|BC|EX00011906","customer_name":"Redline Trucking","customer_mobile":"+60532453245","customer_email":"logisticexpress@yopmail.com","txn_desc":"Reliva E-Payment : RLVAREDLI20240119A001"}';
 
-        $this->response['status'] = 'success';
-        $this->response['data'] = $input;
-        $this->response['message'] = 'Transaction has been completed. Please check STATUS, STATUS_CODE and STATUS_MESSAGE for complete details.';
+        $process = json_decode($input, true);
 
-        echo json_encode($this->response);
+        $data = json_encode($this->json_change_key($process, 'TRANS_ID', 'ORDER_ID'));
+        $data = json_decode($data, true);
+
+        # post back to merchant
+        $url = 'https://evault.develop.xlog.asia/thank-you/reliva';
+        return $this->render($response,$url);
+
+        /* $client = new Client();
+        $response = $client->request('POST', $url, [
+            'form_params' => $data
+        ]);
+
+        return $response->getBody(); */
+    }
+
+    
+    private function json_change_key($arr, $oldkey, $newkey) {
+        $json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
+        return json_decode($json);	
+    }
+
+    public static function render($fieldValues, $paymentUrl)
+    {
+        echo "<form id='autosubmit' action='".$paymentUrl."' method='post'>";
+        if (is_array($fieldValues) || is_object($fieldValues))
+        {
+            foreach ($fieldValues as $key => $val) {
+                echo "<input type='hidden' name='".$key."' value='".htmlspecialchars($val)."'>";
+            }
+        }
+        echo "<script type='text/javascript'>
+            function submitForm() {
+                document.getElementById('autosubmit').submit();
+            }
+            window.onload = submitForm;
+        </script>";
     }
 }

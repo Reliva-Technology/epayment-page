@@ -5,6 +5,7 @@
     "require": {
         "ext-pdo_sqlite": "*",
         "phpmailer/phpmailer": "^6.2",
-        "ezyang/htmlpurifier": "^4.13"
+        "ezyang/htmlpurifier": "^4.13",
+        "guzzlehttp/guzzle": "^7.8"
     }
 }
