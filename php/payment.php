@@ -139,8 +139,8 @@ class Payment
         //$data = json_decode($data, true);
 
         # post back to merchant
-        //$url = 'https://evault.develop.xlog.asia/thank-you/reliva';
-        $url = 'https://httpbin.org/post';
+        $url = 'https://evault.develop.xlog.asia/thank-you/reliva';
+        //$url = 'https://httpbin.org/post';
         //return $this->render($response,$url);
 
         $client = new Client();
