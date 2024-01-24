@@ -140,14 +140,14 @@ class Payment
 
         # post back to merchant
         $url = 'https://evault.develop.xlog.asia/thank-you/reliva';
-        return $this->render($response,$url);
+        //return $this->render($response,$url);
 
-        /* $client = new Client();
-        $response = $client->request('POST', $url, [
-            'form_params' => $data
+        $client = new Client();
+        $client->request('POST', $url, [
+            'json' => $data
         ]);
 
-        return $response->getBody(); */
+        header("Location:".$url);
     }
 
     
