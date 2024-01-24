@@ -147,9 +147,9 @@ class Payment
         $response = $client->request('POST', $url, [
             'json' => $data
         ]);
-        echo $response->getBody();
+        //echo $response->getBody();
 
-        //header("Location:".$url);
+        header("Location:".$url);
     }
 
     
