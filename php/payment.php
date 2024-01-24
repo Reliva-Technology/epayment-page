@@ -162,14 +162,14 @@ class Payment
         if (is_array($fieldValues) || is_object($fieldValues))
         {
             foreach ($fieldValues as $key => $val) {
-                echo "<input type='hidden' name='".$key."' value='".htmlspecialchars($val)."'>";
+                echo "<input type='text' name='".$key."' value='".htmlspecialchars($val)."'>";
             }
         }
         echo "<script type='text/javascript'>
             function submitForm() {
                 document.getElementById('autosubmit').submit();
             }
-            window.onload = submitForm;
+            //window.onload = submitForm;
         </script>";
     }
 }
