@@ -135,7 +135,7 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
-        $data = json_encode($this->json_change_key($input, 'TRANS_ID', 'ORDER_ID'));
+        $data = $this->json_change_key($input, 'TRANS_ID', 'ORDER_ID');
         //$data = json_decode($data, true);
 
         # post back to merchant
