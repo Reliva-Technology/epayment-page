@@ -136,7 +136,7 @@ class Payment
         $input = $_POST;
 
         $data = json_encode($this->json_change_key($input, 'TRANS_ID', 'ORDER_ID'));
-        $data = json_decode($data, true);
+        //$data = json_decode($data, true);
 
         # post back to merchant
         $url = 'https://evault.develop.xlog.asia/thank-you/reliva';
