@@ -155,7 +155,7 @@ class Payment
     
     private function json_change_key($arr, $oldkey, $newkey) {
         $json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
-        return $json;	
+        return stripslashes($json);	
     }
 
     public static function render($fieldValues, $paymentUrl)
