@@ -151,11 +151,8 @@ class Payment
     public static function render($fieldValues, $paymentUrl)
     {
         echo "<form id='autosubmit' action='".$paymentUrl."' method='post'>";
-        if (is_array($fieldValues) || is_object($fieldValues))
-        {
-            foreach ($fieldValues as $key => $val) {
-                echo "<input type='text' name='".$key."' value='".htmlspecialchars($val)."'>";
-            }
+        foreach ($fieldValues as $key => $val) {
+            echo "<input type='text' name='".$key."' value='".$val."'>";
         }
         echo "<script type='text/javascript'>
             function submitForm() {
