@@ -140,23 +140,20 @@ class Payment
         return $this->render($input,$url);
     }
 
-    
-    private function json_change_key($arr, $oldkey, $newkey) {
-        $json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
-        return stripslashes($json);	
-    }
-
     private function render($fieldValues, $paymentUrl)
     {
         echo "<form id='autosubmit' action='".$paymentUrl."' method='post'>";
         foreach ($fieldValues as $key => $val) {
+            if($key == 'TRANS_ID'){
+                $key = 'ORDER_ID';
+            }
             echo "<input type='text' name='".$key."' value='".$val."'>";
         }
         echo "<script type='text/javascript'>
             function submitForm() {
                 document.getElementById('autosubmit').submit();
             }
-            //window.onload = submitForm;
+            window.onload = submitForm;
         </script>";
     }
 }
