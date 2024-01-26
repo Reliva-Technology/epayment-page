@@ -148,7 +148,7 @@ class Payment
         return stripslashes($json);	
     }
 
-    public static function render($fieldValues, $paymentUrl)
+    private function render($fieldValues, $paymentUrl)
     {
         echo "<form id='autosubmit' action='".$paymentUrl."' method='post'>";
         foreach ($fieldValues as $key => $val) {
