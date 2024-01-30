@@ -26,7 +26,17 @@ class Payment
             $merchant_code = $data['MERCHANT_CODE'] ?? $this->config['fpx']['merchant-code'];
             $payment_mode = $data['payment_mode'];
             $transaction_id = $data['ORDER_ID'];
-            $callback = $data['CALLBACK_URL'];
+
+            if(isset($data['CALLBACK_URL'])){
+                $callback = $data['CALLBACK_URL'];
+            } else {
+                $json = [
+                    'status' => 'error',
+                    'message' => 'Missing callback URL'
+                ];
+                echo json_encode($json);
+                die;
+            }
 
             if($payment_mode == 'fpx' || $payment_mode == 'fpx1'){
                 $payment_method = 'FPX';
@@ -91,7 +101,11 @@ class Payment
 
         } else {
 
-            // error
+            $json = [
+                'status' => 'error',
+                'message' => 'Missing payment data'
+            ];
+            echo json_encode($json);
         }
     }
 
@@ -138,9 +152,19 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
+        if(isset($data['CALLBACK_URL'])){
+            $url = $input['callback_url'];
+        } else {
+            $json = [
+                'status' => 'error',
+                'data' => $input,
+                'message' => 'Missing callback URL'
+            ];
+            echo json_encode($json);
+            die;
+        }
+
         # post back to merchant callback url
-        //$url = 'https://evault.develop.xlog.asia/thank-you/reliva';
-        $url = $input['callback_url'];
         return $this->render($input,$url);
     }
 
