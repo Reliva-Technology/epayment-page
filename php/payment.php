@@ -155,7 +155,7 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
-        if(isset($data['CALLBACK_URL'])){
+        if($data['CALLBACK_URL']){
             $url = $input['callback_url'];
         } else {
             $json = [
