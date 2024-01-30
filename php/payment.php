@@ -26,6 +26,7 @@ class Payment
             $merchant_code = $data['MERCHANT_CODE'] ?? $this->config['fpx']['merchant-code'];
             $payment_mode = $data['payment_mode'];
             $transaction_id = $data['ORDER_ID'];
+            $callback = $data['CALLBACK_URL'];
 
             if($payment_mode == 'fpx' || $payment_mode == 'fpx1'){
                 $payment_method = 'FPX';
@@ -46,7 +47,8 @@ class Payment
                 'CUSTOMER_NAME' => $data['CUSTOMER_NAME'],
                 'CUSTOMER_MOBILE' => $data['CUSTOMER_MOBILE'],
                 'CUSTOMER_EMAIL' => $data['CUSTOMER_EMAIL'],
-                'TXN_DESC' => $data['TXN_DESC']
+                'TXN_DESC' => $data['TXN_DESC'],
+                'CALLBACK_URL' => $data['CALLBACK_URL']
             );
 
             $encrypt = new StringerController();
@@ -70,7 +72,8 @@ class Payment
                 'BANK_CODE' => $data['BANK_CODE'],
                 'BE_MESSAGE' => $data['BE_MESSAGE'],
                 'MERCHANT_CODE' => $merchant_code,
-                'CHECKSUM' => $checksum
+                'CHECKSUM' => $checksum,
+                'CALLBACK_URL' => $callback ?? NULL
             );
 
             # pass to FPX controller
@@ -135,8 +138,9 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
-        # post back to merchant
-        $url = 'https://evault.develop.xlog.asia/thank-you/reliva';
+        # post back to merchant callback url
+        //$url = 'https://evault.develop.xlog.asia/thank-you/reliva';
+        $url = $input['CALLBACK_URL'];
         return $this->render($input,$url);
     }
 
