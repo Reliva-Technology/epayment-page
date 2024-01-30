@@ -140,7 +140,7 @@ class Payment
 
         # post back to merchant callback url
         //$url = 'https://evault.develop.xlog.asia/thank-you/reliva';
-        $url = $input['CALLBACK_URL'];
+        $url = $input['callback_url'];
         return $this->render($input,$url);
     }
 
