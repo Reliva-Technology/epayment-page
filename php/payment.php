@@ -160,8 +160,9 @@ class Payment
                 'data' => $input,
                 'message' => 'Missing callback URL'
             ];
+            header('Content-Type: application/json');
             echo json_encode($json);
-            die;
+            exit();
         }
 
         # post back to merchant callback url
