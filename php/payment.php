@@ -34,8 +34,9 @@ class Payment
                     'status' => 'error',
                     'message' => 'Missing callback URL'
                 ];
+                header('Content-Type: application/json');
                 echo json_encode($json);
-                die;
+                exit();
             }
 
             if($payment_mode == 'fpx' || $payment_mode == 'fpx1'){
@@ -105,7 +106,9 @@ class Payment
                 'status' => 'error',
                 'message' => 'Missing payment data'
             ];
+            header('Content-Type: application/json');
             echo json_encode($json);
+            exit();
         }
     }
 
