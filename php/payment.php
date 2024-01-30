@@ -151,7 +151,7 @@ class Payment
             if($key == 'TRANS_ID'){
                 $key = 'ORDER_ID';
             }
-            echo "<input type='text' name='".$key."' value='".$val."'>";
+            echo "<input type='hidden' name='".$key."' value='".$val."'>";
         }
         echo "<script type='text/javascript'>
             function submitForm() {
