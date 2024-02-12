@@ -155,6 +155,18 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
+        # check for debug
+        if($this->config['debug'] == true){
+            $json = [
+                'status' => 'debug',
+                'data' => $input,
+                'message' => 'Debug mode enabled. Check for response data'
+            ];
+            header('Content-Type: application/json');
+            echo json_encode($json);
+            exit();
+        }
+
         if($input['callback_url']){
             $url = $input['callback_url'];
         } else {
