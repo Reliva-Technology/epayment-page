@@ -32,7 +32,19 @@ class Payment
             } else {
                 $json = [
                     'status' => 'error',
-                    'message' => 'Missing callback URL'
+                    'message' => 'Callback URL is required'
+                ];
+                header('Content-Type: application/json');
+                echo json_encode($json);
+                exit();
+            }
+
+            if(isset($data['UPDATE_URL'])){
+                $update = $data['UPDATE_URL'];
+            } else {
+                $json = [
+                    'status' => 'error',
+                    'message' => 'Update URL is required'
                 ];
                 header('Content-Type: application/json');
                 echo json_encode($json);
@@ -59,7 +71,8 @@ class Payment
                 'CUSTOMER_MOBILE' => $data['CUSTOMER_MOBILE'],
                 'CUSTOMER_EMAIL' => $data['CUSTOMER_EMAIL'],
                 'TXN_DESC' => $data['TXN_DESC'],
-                'CALLBACK_URL' => $data['CALLBACK_URL']
+                'CALLBACK_URL' => $data['CALLBACK_URL'],
+                'UPDATE_URL' => $data['UPDATE_URL']
             );
 
             $encrypt = new StringerController();
@@ -84,7 +97,8 @@ class Payment
                 'BE_MESSAGE' => $data['BE_MESSAGE'],
                 'MERCHANT_CODE' => $merchant_code,
                 'CHECKSUM' => $checksum,
-                'CALLBACK_URL' => $callback ?? NULL
+                'CALLBACK_URL' => $callback ?? NULL,
+                'UPDATE_URL' => update ?? NULL
             );
 
             # pass to FPX controller
