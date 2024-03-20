@@ -180,6 +180,19 @@ class Payment
             exit();
         }
 
+        if($input['update_url']){
+            $url = $input['update_url'];
+        } else {
+            $json = [
+                'status' => 'error',
+                'data' => $input,
+                'message' => 'Missing update URL'
+            ];
+            header('Content-Type: application/json');
+            echo json_encode($json);
+            exit();
+        }
+
         # post back to merchant callback url
         return $this->render($input,$url);
     }
