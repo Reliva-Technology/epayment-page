@@ -86,7 +86,7 @@
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Callback URL</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CALLBACK_URL" value="">
+                                        <input type="text" class="form-control" name="UPDATE_URL" value="">
                                     </div>
                                 </div>
                             </div>
