@@ -82,6 +82,17 @@ switch ($id) {
 		
 	break;
 
+    case 'update':
+
+        require_once('php/payment.php');
+        $payment = new Payment();
+
+        $data = $_POST;
+
+        return $payment->update($data);
+		
+	break;
+
     case 'cancel-payment':
 	
 		require_once('php/payment.php');

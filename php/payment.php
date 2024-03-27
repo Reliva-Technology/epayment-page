@@ -194,6 +194,27 @@ class Payment
             exit();
         }
 
+        # post back to merchant callback url
+        return $this->render($input,$url);
+    }
+
+    public function update()
+    {
+        $response = NULL;
+        $input = $_POST;
+
+        # check for debug
+        if($this->config['debug'] == true){
+            $json = [
+                'status' => 'debug',
+                'data' => $input,
+                'message' => 'Debug mode enabled. Check for response data'
+            ];
+            header('Content-Type: application/json');
+            echo json_encode($json);
+            exit();
+        }
+
         if($input['update_url']){
             $url = $input['update_url'];
         } else {
