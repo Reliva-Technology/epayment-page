@@ -98,7 +98,7 @@ class Payment
                 'MERCHANT_CODE' => $merchant_code,
                 'CHECKSUM' => $checksum,
                 'CALLBACK_URL' => $callback ?? NULL,
-                'UPDATE_URL' => update ?? NULL
+                'UPDATE_URL' => $update ?? NULL
             );
 
             # pass to FPX controller
