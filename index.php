@@ -30,7 +30,7 @@
                                 <div class="form-group row">
                                     <label for="merchant" class="col-lg-3 col-form-label">Jabatan/Agensi/Syarikat</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="merchant" value="">
+                                        <input type="text" class="form-control" name="merchant" value="Test agency">
                                     </div>
                                 </div>
 
@@ -73,6 +73,20 @@
                                     <label for="description" class="col-lg-3 col-form-label">Keterangan</label>
                                     <div class="col-lg-9">
                                         <input type="text" class="form-control" name="TXN_DESC" value="Bayaran pembaharuan lesen">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="description" class="col-lg-3 col-form-label">Return URL</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" name="RETURN_URL" value="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="description" class="col-lg-3 col-form-label">Callback URL</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" name="CALLBACK_URL" value="">
                                     </div>
                                 </div>
                             </div>
