@@ -228,8 +228,14 @@ class Payment
             exit();
         }
 
-        # post back to merchant callback url
-        return $this->render($input,$url);
+        # post back to merchant callback url using curl
+        //return $this->render($input,$url);
+        $curlHandle = curl_init($url);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $input);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+
+        $curlResponse = curl_exec($curlHandle);
+        curl_close($curlHandle);
     }
 
     private function render($fieldValues, $paymentUrl)
