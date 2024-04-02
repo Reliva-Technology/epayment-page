@@ -203,6 +203,9 @@ class Payment
         $response = NULL;
         $input = $_POST;
 
+        $extra = $_POST['xtra_vars'];
+        foreach ($extra as $k => $v) { $input[$k] = $v; }
+
         # check for debug
         if($this->config['debug'] == true){
             $json = [
@@ -229,7 +232,7 @@ class Payment
         }
 
         # post back to merchant callback url using curl
-        //return $this->render($input,$url);
+        
         $curlHandle = curl_init($url);
         curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $input);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
