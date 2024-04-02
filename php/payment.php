@@ -236,6 +236,7 @@ class Payment
 
         $curlResponse = curl_exec($curlHandle);
         curl_close($curlHandle);
+        die("RECEIVED: ".$curlResponse);
     }
 
     private function render($fieldValues, $paymentUrl)
