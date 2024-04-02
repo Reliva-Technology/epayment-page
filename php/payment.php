@@ -204,7 +204,12 @@ class Payment
         $input = $_POST;
 
         $extra = $_POST['xtra_vars'];
-        foreach ($extra as $k => $v) { $input[$k] = $v; }
+        foreach ($extra as $xtra) {
+            $input_extra = [
+                $xtra['TransactionXtra']['key'] => $xtra['TransactionXtra']['value']
+            ];
+            $input = array_merge($input, $input_extra);
+        }
 
         # check for debug
         if($this->config['debug'] == true){
