@@ -240,6 +240,7 @@ class Payment
 
         $curlResponse = curl_exec($curlHandle);
         curl_close($curlHandle);
+        echo $curlResponse;
     }
 
     private function render($fieldValues, $paymentUrl)
