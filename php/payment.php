@@ -231,8 +231,12 @@ class Payment
         # post back to merchant callback url using curl
         
         $curlHandle = curl_init($url);
-        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $input);
+        $json = json_encode($input);
+        curl_setopt($curlHandle, CURLOPT_POSTFIELDS, $json);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json'
+        ));
 
         $curlResponse = curl_exec($curlHandle);
         curl_close($curlHandle);
