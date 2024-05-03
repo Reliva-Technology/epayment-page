@@ -69,16 +69,19 @@ if($content_type == 'application/json'){
                     <h3 class="text-center">Cara Pembayaran</h3>
                 </div>
                 <div class="content mb-2">
-                    <p class="text-center">Pilih Perbankan Internet (Individu/Korporat)</p>
+                    <p class="text-center">Pilih Perbankan Internet (Individu/Korporat)<br>atau<br>Kad Kredit/Debit</p>
                     <div class="list-group list-custom-small">
                         <a href="#" class="payment-mode" data-payment-mode="fpx" id="fpx"><img src="images/fpx.svg" height="48" title="Personal Banking" alt="Personal Banking"><span class="mx-3">Perbankan Internet (Individu)</span><i class="fa fa-angle-right"></i></a>
                         <a href="#" class="payment-mode" data-payment-mode="fpx1" id="fpx1"><img src="images/fpx.svg" height="48" title="Corporate Banking" alt="Corporate Banking"><span class="mx-3">Perbankan Internet (Korporat)</span><i class="fa fa-angle-right"></i></a>
+                        <a href="#" class="payment-mode" data-payment-mode="migs" id="migs"><img src="images/visa.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><img src="images/mastercard.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><span class="mx-3">Kad Kredit/Debit</span><i class="fa fa-angle-right"></i></a>
                     </div>
                     <dl class="mt-2">
                         <dt>Perbankan Individu</dt>
                         <dd>Minimum RM 1.00 dan maksimum RM 30,000.00</dd>
                         <dt>Perbankan Korporat</dt>
                         <dd>Minimum RM 2.00 dan maksimum RM 1,000,000.00</dd>
+                        <dt>Kad Kredit/Debit</dt>
+                        <dd>Tertakluk kepada had kad anda</dd>
                     </dl>
                     <div class="d-grid gap-2 col-6 mx-auto mt-2">
                         <a href="#" onclick="cancel()" class="btn btn-danger">Batal</a>
