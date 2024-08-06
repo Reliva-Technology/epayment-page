@@ -1,7 +1,7 @@
 {
     "fpx": {
         "environment": "Staging",
-        "exchange-id": "EX00003286",
+        "exchange-id": "EX00002877",
         "merchant-code": "sip",
         "url": "https://epaymentstg.st.gov.my/eps/request"
     },

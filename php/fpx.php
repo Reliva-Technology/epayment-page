@@ -134,11 +134,11 @@ class FPX
 		return $content;
 	}
 
-	public function api_bank($post)
+	public function api_bank()
 	{
-		$mode = $post['mode'];
-		$env = $post['env'];
-		$exchange = $post['exchange'];
+		$mode = $_POST['mode'];
+		$env = $_POST['env'];
+		$exchange = $_POST['exchange'];
 
 		if($env == 'Production')
 			$url = "https://www.mepsfpx.com.my/FPXMain/RetrieveBankList";
@@ -147,7 +147,9 @@ class FPX
 
 		$data = $this->get_checksum_api($mode, $exchange, $env);
 		$content = $this->get_response($url, $data);
-		return $content;
+		
+		echo $content;
+		exit;
 	}
 
 	private function get_checksum_api($mode, $exchange, $env)
@@ -221,16 +223,11 @@ class FPX
 				'method'  => 'POST',
 				'header'  => 'Content-type: application/x-www-form-urlencoded',
 				'content' => $data
-			  ),
-			  "ssl"=>array(
-				"verify_peer"=>false,
-				"verify_peer_name"=>false,
 			  )
 			);
 
-			$context  = stream_context_create($opts);
+			$context = stream_context_create($opts);
 			$result = file_get_contents($url, false, $context);
-
 			return $result;
 		}
 		catch(Exception $e) {
