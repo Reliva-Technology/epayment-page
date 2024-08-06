@@ -103,4 +103,15 @@ switch ($id) {
 		return $payment->cancel($data);
 		
 	break;
+
+    case 'fpx-bank-list':
+	
+		require_once('php/fpx.php');
+		$fpx = new FPX();
+
+		$data = $_POST;
+
+		return $fpx->api_bank($data);
+		
+	break;
 }

@@ -150,6 +150,54 @@ class FPX
 		return $content;
 	}
 
+	public function api_bank()
+	{
+		$mode = $_POST['mode'];
+		$env = $_POST['env'];
+		$exchange = $_POST['exchange'];
+
+		if($env == 'Production')
+			$url = "https://www.mepsfpx.com.my/FPXMain/RetrieveBankList";
+		else
+			$url = "https://uat.mepsfpx.com.my/FPXMain/RetrieveBankList";
+
+		$data = $this->get_checksum_api($mode, $exchange, $env);
+		$content = $this->get_response($url, $data);
+		
+		echo $content;
+		exit;
+	}
+
+	private function get_checksum_api($mode, $exchange, $env)
+	{
+		$msgToken = $mode;
+		$msgType = 'BE';
+		$version = '6.0';
+
+		$out = $msgToken.'|'.$msgType.'|'.$exchange.'|'.$version;
+		$key_location = ROOT_DIR.'/fpx/'.$env.'/'.$exchange.'/'.$exchange.'.key';
+		
+		try{
+			$priv_key = file_get_contents($key_location);
+			$pkeyid = openssl_get_privatekey($priv_key);
+			openssl_sign($out, $binary_signature, $pkeyid, OPENSSL_ALGO_SHA1);
+			$checkSum = strtoupper(bin2hex( $binary_signature ));
+
+			$data = array(
+				"fpx_msgType" => $msgType,
+				"fpx_msgToken" => $msgToken,
+				"fpx_sellerExId" => $exchange,
+				"fpx_version" => $version,
+				"fpx_checkSum" => $checkSum
+			);
+
+			return $data;
+		}
+		catch (Exception $e) {
+    		return $e->getMessage(); 
+		}
+	}
+
 	private function get_checksum($mode)
 	{
 		$msgToken = $mode;
@@ -191,16 +239,11 @@ class FPX
 				'method'  => 'POST',
 				'header'  => 'Content-type: application/x-www-form-urlencoded',
 				'content' => $data
-			  ),
-			  "ssl"=>array(
-				"verify_peer"=>false,
-				"verify_peer_name"=>false,
 			  )
 			);
 
-			$context  = stream_context_create($opts);
+			$context = stream_context_create($opts);
 			$result = file_get_contents($url, false, $context);
-
 			return $result;
 		}
 		catch(Exception $e) {
