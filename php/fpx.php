@@ -163,6 +163,25 @@ class FPX
 
 		$data = $this->get_checksum_api($mode, $exchange, $env);
 		$content = $this->get_response($url, $data);
+
+		if ($content == 'ERROR') {
+			# check for certificate error
+			$data = openssl_x509_parse(file_get_contents(ROOT_DIR.'/fpx/'.$env.'/'.$exchange.'/'.$exchange.'.cer'));
+
+			$validFrom = 'Start: ' . date('Y-m-d H:i:s', $data['validFrom_time_t']);
+			$validTo = 'End: ' . date('Y-m-d H:i:s', $data['validTo_time_t']);
+
+			$response = [
+				'status' => 'error',
+				'message' => 'Certificate Error. Please check the validity of FPX certificate',
+				'start_date' => $validFrom,
+				'end_date' => $validTo
+			];
+
+			header('Content-Type: application/json');
+			echo json_encode($response);
+			exit;
+		}
 		
 		echo $content;
 		exit;
