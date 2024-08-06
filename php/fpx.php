@@ -19,8 +19,9 @@ class FPX
 	public function get_bank_list($post)
 	{
 		$mode = $post['mode'];
-		$env = $post['env'];
+		$env = $this->config['fpx']['environment'];
 		$cache = $this->config['cache'];
+		$exchange = $this->config['fpx']['exchange-id'];
 
 		$file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '.json';
 		$be_file = ROOT_DIR.'/fpx/be_message.json';
@@ -39,6 +40,21 @@ class FPX
 
 			$data = $this->get_checksum($mode);
 			$content = $this->get_response($url, $data);
+			
+			if ($content == 'ERROR') {
+				# check for certificate error
+				$data = openssl_x509_parse(file_get_contents(ROOT_DIR.'/fpx/'.$env.'/'.$exchange.'/'.$exchange.'.cer'));
+
+				$validFrom = 'Start: ' . date('Y-m-d H:i:s', $data['validFrom_time_t']);
+				$validTo = 'End: ' . date('Y-m-d H:i:s', $data['validTo_time_t']);
+
+				$response = [
+					'status' => 'error',
+					'message' => 'Certificate Error. Please check the validity of FPX certificate.'."\n".$validFrom . "\n".$validTo . "\n"
+				];
+				return $response;
+			}
+
 			$token = strtok($content, "&");
 
 			while ($token !== false) {
