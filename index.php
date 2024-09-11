@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>E-Payment Test Page</title>
+        <title>E-Payment Integration Sandbox</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="" name="description" />
         <meta content="Fadli Saad" name="author" />
@@ -28,71 +28,96 @@
                             <div class="card-body">
                                 <form method="post" action="01-mode.php" id="form-bayar">
                                 <div class="form-group row">
-                                    <label for="merchant" class="col-lg-3 col-form-label">Jabatan/Agensi/Syarikat</label>
+                                    <label for="exchange_id" class="col-lg-3 col-form-label">Exchange ID <span class="text-danger">*</span></label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="EXCHANGE_ID" id="exchange_id">
+                                            <?php
+                                            $config = json_decode(file_get_contents('config.json'), true);
+                                            foreach ($config['fpx']['exchange-id'] as $bank => $id) {
+                                                echo "<option value=\"$id\">$bank - $id</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="merchant_code" class="col-lg-3 col-form-label">Merchant Code <span class="text-danger">*</span></label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" name="MERCHANT_CODE" id="merchant_code">
+                                            <?php
+                                            $config = json_decode(file_get_contents('config.json'), true);
+                                            foreach ($config['fpx']['merchant-code'] as $bank => $code) {
+                                                echo "<option value=\"$code\">$bank - $code</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="merchant" class="col-lg-3 col-form-label">Jabatan/Agensi/Syarikat <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
                                         <input type="text" class="form-control" name="merchant" value="Test agency">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="trans_id" class="col-lg-3 col-form-label">ID Transaksi Pelanggan (mesti unik)</label>
+                                    <label for="trans_id" class="col-lg-3 col-form-label">ID Transaksi Pelanggan (mesti unik) <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="ORDER_ID" value="MPMM50633231893">
+                                        <input type="text" class="form-control" name="ORDER_ID" value="<?php echo uniqid('UAT_'); ?>">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="payee_name" class="col-lg-3 col-form-label">Nama Pembayar</label>
+                                    <label for="payee_name" class="col-lg-3 col-form-label">Nama Pembayar <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CUSTOMER_NAME" value="Fadli Saad">
+                                        <input type="text" class="form-control" name="CUSTOMER_NAME" value="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="payee_email" class="col-lg-3 col-form-label">Email Pembayar</label>
+                                    <label for="payee_email" class="col-lg-3 col-form-label">Email Pembayar <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CUSTOMER_EMAIL" value="epic@reliva.com.my">
+                                        <input type="text" class="form-control" name="CUSTOMER_EMAIL" value="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="payee_phone_no" class="col-lg-3 col-form-label">No Telefon Pembayar</label>
+                                    <label for="payee_phone_no" class="col-lg-3 col-form-label">No Telefon Pembayar <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CUSTOMER_MOBILE" value="0137020114">
+                                        <input type="text" class="form-control" name="CUSTOMER_MOBILE" value="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="amount" class="col-lg-3 col-form-label">Jumlah</label>
+                                    <label for="amount" class="col-lg-3 col-form-label">Jumlah <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="AMOUNT" value="35.10">
+                                        <input type="text" class="form-control" name="AMOUNT" value="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="description" class="col-lg-3 col-form-label">Keterangan</label>
+                                    <label for="description" class="col-lg-3 col-form-label">Keterangan <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="TXN_DESC" value="Bayaran pembaharuan lesen">
+                                        <input type="text" class="form-control" name="TXN_DESC" value="">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Return URL</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CALLBACK_URL" value="">
+                                        <input type="text" class="form-control" name="CALLBACK_URL" value="https://fpx.reliva.com.my/action.php?id=response">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Update URL</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="UPDATE_URL" value="">
+                                        <input type="text" class="form-control" name="UPDATE_URL" value="https://fpx.reliva.com.my/action.php?id=update">
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <input type="hidden" name="MERCHANT_CODE" value="sandbox">
-                                <button type="submit" class="btn btn-primary">Pembayaran</button>
+                                <button type="submit" class="btn btn-primary">Pilih Bank</button>
                                 </form>
                             </div>
                         </div>

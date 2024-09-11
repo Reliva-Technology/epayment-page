@@ -1,13 +1,22 @@
 {
     "fpx": {
         "environment": "Staging",
-        "exchange-id": "EX00003286",
-        "merchant-code": "sip",
-        "url": "https://epaymentstg.st.gov.my/eps/request"
+        "exchange-id":
+        {
+            "ambank": "EX00021844",
+            "bank-islam": "EX00023174"
+        },
+        "merchant-code": 
+        {
+            "ambank": "Reliva Ambank",
+            "bankislam": "Reliva Bank Islam",
+            "sandbox": "Reliva Sandbox"
+        },
+        "url": "https://epaymentstg.reliva.com.my/eps/request"
     },
     "stringer": {
-        "url": "https://epaymentstg.st.gov.my/stringer"
+        "url": "https://epaymentstg.reliva.com.my/stringer"
     },
     "cache": "3000",
-    "callback": "https://api.mymanjung.gates.my/api/upay/payment-status"
+    "callback": "https://fpx.reliva.com.my/action.php?id=response"
 }
