@@ -4,7 +4,8 @@ $bank = new FPX();
 
 $post = [
 	'mode' => $_POST['mode'],
-	'env' => $_POST['env']
+	'env' => $_POST['env'],
+	'exchange' => $_POST['exchange']
 ];
 
 $bank_list = $bank->get_bank_list($post);

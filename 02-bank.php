@@ -9,8 +9,9 @@ $payload = NULL;
 foreach ($data as $key => $val) {
     $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
 }
-$env = 'production';
+$env = $config['fpx']['environment'];
 $mode = $_POST['payment_mode'];
+$exchange = $_POST['EXCHANGE_ID'];
 if($mode == 'fpx'){
     $fpx = '01';
     $bank_type = 'Individu';
@@ -88,7 +89,8 @@ if($mode == 'fpx'){
                 url: "php/bank-list.php",
                 data:{
                     mode: '<?php echo $fpx ?>',
-                    env: '<?php echo $env ?>'
+                    env: '<?php echo $env ?>',
+                    exchange: '<?php echo $exchange ?>'
                 },
                 success: function(response) {
                     if(response.status == 'error'){
