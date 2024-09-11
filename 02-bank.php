@@ -91,6 +91,10 @@ if($mode == 'fpx'){
                     env: '<?php echo $env ?>'
                 },
                 success: function(response) {
+                    if(response.status == 'error'){
+                        alert(response.message);
+                        return false;
+                    }
                     $.each(response.bank_list, function(key,value){
                         $('#bank-list').append('<a href="#" class="bank-code" data-bank-code="'+ key +'" data-bank-name="'+ value +'"><img src="images/bank/'+ key +'.png" height="48" title="'+ value +'" alt="'+ value +'"><span class="mx-3">'+ value +'</span><i class="fa fa-angle-right"></i></a>');
                     });
@@ -104,6 +108,9 @@ if($mode == 'fpx'){
                             $("#form-bayar").submit();
                         });
                     });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
                 }
             });
         }
