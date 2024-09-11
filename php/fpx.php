@@ -21,7 +21,7 @@ class FPX
 		$mode = $post['mode'];
 		$env = $this->config['fpx']['environment'];
 		$cache = $this->config['cache'];
-		$exchange = $this->config['fpx']['exchange-id'];
+		$exchange = $post['exchange'];
 
 		$file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '.json';
 		$be_file = ROOT_DIR.'/fpx/be_message.json';
@@ -38,7 +38,7 @@ class FPX
 			else
 				$url = "https://uat.mepsfpx.com.my/FPXMain/RetrieveBankList";
 
-			$data = $this->get_checksum($mode);
+			$data = $this->get_checksum_api($mode, $exchange, $env);
 			$content = $this->get_response($url, $data);
 			
 			if ($content == 'ERROR') {
@@ -199,7 +199,7 @@ class FPX
 		try{
 			$priv_key = file_get_contents($key_location);
 			$pkeyid = openssl_get_privatekey($priv_key);
-			openssl_sign($out, $binary_signature, $pkeyid, OPENSSL_ALGO_SHA256);
+			openssl_sign($out, $binary_signature, $pkeyid, OPENSSL_ALGO_SHA1);
 			$checkSum = strtoupper(bin2hex( $binary_signature ));
 
 			$data = array(
@@ -230,7 +230,7 @@ class FPX
 		try{
 			$priv_key = file_get_contents($key_location);
 			$pkeyid = openssl_get_privatekey($priv_key);
-			openssl_sign($out, $binary_signature, $pkeyid, OPENSSL_ALGO_SHA256);
+			openssl_sign($out, $binary_signature, $pkeyid, OPENSSL_ALGO_SHA1);
 			$checkSum = strtoupper(bin2hex( $binary_signature ));
 
 			$data = array(

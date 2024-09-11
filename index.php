@@ -26,7 +26,7 @@
                                 <h4>Maklumat Pembayaran</h4>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="01-mode.php" id="form-bayar">
+                                <form method="post" action="01-mode-fpx.php" id="form-bayar">
                                 <div class="form-group row">
                                     <label for="exchange_id" class="col-lg-3 col-form-label">Exchange ID <span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
