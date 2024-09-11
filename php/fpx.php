@@ -21,7 +21,7 @@ class FPX
 		$mode = $post['mode'];
 		$env = $this->config['fpx']['environment'];
 		$cache = $this->config['cache'];
-		$exchange = $this->config['fpx']['exchange-id'];
+		$exchange = $post['EXCHANGE_ID'];
 
 		$file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '.json';
 		$be_file = ROOT_DIR.'/fpx/be_message.json';
