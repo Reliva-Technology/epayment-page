@@ -19,7 +19,7 @@ if($content_type == 'application/x-www-form-urlencoded'){
     $data = $_POST;
     if ($data !== null) {
         foreach ($data as $key => $val) {
-            $payload .= "<input type='text' name='".$key."' value='".$val."'>";
+            $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
         }
     } else {
         http_response_code(400); // Bad Request
