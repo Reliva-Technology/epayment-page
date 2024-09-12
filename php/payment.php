@@ -85,8 +85,6 @@ class Payment
             ];
 
             $checksum = $encrypt->getChecksum($checksum_data);
-            print_r($checksum);
-            exit();
 
             $fpx_data = array(
                 'TRANS_ID' => $transaction_id,
