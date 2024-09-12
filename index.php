@@ -47,7 +47,7 @@
                                             <?php
                                             $config = json_decode(file_get_contents('config.json'), true);
                                             foreach ($config['fpx']['merchant-code'] as $bank => $code) {
-                                                echo "<option value=\"$code\">$bank - $code</option>";
+                                                echo "<option value=\"$bank\">$bank - $code</option>";
                                             }
                                             ?>
                                         </select>

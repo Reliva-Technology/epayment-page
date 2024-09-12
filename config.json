@@ -3,8 +3,8 @@
         "environment": "Staging",
         "exchange-id":
         {
-            "ambank": "EX00021844",
-            "bank-islam": "EX00023174"
+            "Ambnak": "EX00021844",
+            "Bank Islam": "EX00023174"
         },
         "merchant-code": 
         {
