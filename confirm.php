@@ -39,7 +39,7 @@ if($mode == 'fpx'){
 <section class="section mt-3">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 col-lg-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title text-center">Maklumat Pembayaran</h5>
