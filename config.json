@@ -1,7 +1,7 @@
 {
     "fpx": {
         "environment": "Staging",
-        "exchange-id": "EX00002877",
+        "exchange-id": "EX00011194",
         "merchant-code": "sandbox",
         "url": "https://epaymentstg.melaka.gov.my/eps/request"
     },

@@ -9,7 +9,7 @@ $payload = NULL;
 foreach ($data as $key => $val) {
     $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
 }
-$env = 'production';
+$env = $config['fpx']['environment'];
 $mode = $_POST['payment_mode'];
 if($mode == 'fpx'){
     $fpx = '01';
@@ -48,6 +48,7 @@ if($mode == 'fpx'){
             <div class="card">
             <div class="card-header">
                     <h3 class="text-center">Perbankan Internet (<?php echo $bank_type ?>)</h3>
+                    <p class="text-center">Environment: <?php echo $config['fpx']['environment'] ?> Exchange ID: <?php echo $config['fpx']['exchange-id'] ?> Merchant Code: <?php echo $config['fpx']['merchant-code'] ?></p>
                 </div>
                 <div class="content mb-2">
                     <p class="text-center"><?php echo $bank_description ?></p>
@@ -96,12 +97,17 @@ if($mode == 'fpx'){
                     });
                     $('#be_message').val(response.be_message);
                     $('.bank-code').each(function() {
-                        $(this).click(function() {
+                        $(this).click(function(e) {
+                            e.preventDefault();
                             let bank_code = $(this).data('bank-code');
                             let bank_name = $(this).data('bank-name');
-                            $('#bank-code').val(bank_code);
-                            $('#bank-name').val(bank_name);
-                            $("#form-bayar").submit();
+                            if(this.search('Offline') < 0){
+                                $('#bank-code').val(bank_code);
+                                $('#bank-name').val(bank_name);
+                                $("#form-bayar").submit();
+                            } else {
+                                return false;
+                            }
                         });
                     });
                 }
