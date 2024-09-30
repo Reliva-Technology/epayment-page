@@ -11,6 +11,7 @@ foreach ($data as $key => $val) {
 }
 $env = $config['fpx']['environment'];
 $mode = $_POST['payment_mode'];
+$exchange = $_POST['EXCHANGE_ID'];
 if($mode == 'fpx'){
     $fpx = '01';
     $bank_type = 'Individu';
@@ -89,9 +90,14 @@ if($mode == 'fpx'){
                 url: "php/bank-list.php",
                 data:{
                     mode: '<?php echo $fpx ?>',
-                    env: '<?php echo $env ?>'
+                    env: '<?php echo $env ?>',
+                    exchange: '<?php echo $exchange ?>'
                 },
                 success: function(response) {
+                    if(response.status == 'error'){
+                        alert(response.message);
+                        return false;
+                    }
                     $.each(response.bank_list, function(key,value){
                         $('#bank-list').append('<a href="#" class="bank-code" data-bank-code="'+ key +'" data-bank-name="'+ value +'"><img src="images/bank/'+ key +'.png" height="48" title="'+ value +'" alt="'+ value +'"><span class="mx-3">'+ value +'</span><i class="fa fa-angle-right"></i></a>');
                     });
@@ -110,6 +116,9 @@ if($mode == 'fpx'){
                             }
                         });
                     });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
                 }
             });
         }
