@@ -11,7 +11,13 @@ foreach ($data as $key => $val) {
 }
 $env = $config['fpx']['environment'];
 $mode = $_POST['payment_mode'];
-$exchange = $_POST['EXCHANGE_ID'];
+
+if(isset($_POST['EXCHANGE_ID'])){
+    $exchange = $_POST['EXCHANGE_ID'];
+} else {
+    $exchange = $config['fpx']['exchange'];
+}
+
 if($mode == 'fpx'){
     $fpx = '01';
     $bank_type = 'Individu';

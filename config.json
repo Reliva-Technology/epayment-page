@@ -12,6 +12,7 @@
             "bankislam": "Reliva Bank Islam",
             "sandbox": "Reliva Sandbox"
         },
+        "default-exchange": "EX00021844",
         "url": "https://epaymentstg.reliva.com.my/eps/request"
     },
     "stringer": {
