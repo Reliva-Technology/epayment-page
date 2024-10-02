@@ -111,9 +111,10 @@ if($mode == 'fpx'){
                     $('.bank-code').each(function() {
                         $(this).click(function(e) {
                             e.preventDefault();
+                            let bank = $(this);
                             let bank_code = $(this).data('bank-code');
                             let bank_name = $(this).data('bank-name');
-                            if($(this).search('Offline') < 0){
+                            if(bank.search('Offline') < 0){
                                 $('#bank-code').val(bank_code);
                                 $('#bank-name').val(bank_name);
                                 $("#form-bayar").submit();
