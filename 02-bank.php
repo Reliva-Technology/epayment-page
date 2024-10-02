@@ -113,7 +113,7 @@ if($mode == 'fpx'){
                             e.preventDefault();
                             let bank_code = $(this).data('bank-code');
                             let bank_name = $(this).data('bank-name');
-                            if(this.search('Offline') < 0){
+                            if($(this).search('Offline') < 0){
                                 $('#bank-code').val(bank_code);
                                 $('#bank-name').val(bank_name);
                                 $("#form-bayar").submit();
