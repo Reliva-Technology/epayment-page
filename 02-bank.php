@@ -55,7 +55,7 @@ if($mode == 'fpx'){
             <div class="card">
             <div class="card-header">
                     <h3 class="text-center">Perbankan Internet (<?php echo $bank_type ?>)</h3>
-                    <p class="text-center">Environment: <?php echo $config['fpx']['environment'] ?> Exchange ID: <?php echo $config['fpx']['exchange-id'] ?> Merchant Code: <?php echo $config['fpx']['merchant-code'] ?></p>
+                    <p class="text-center">Environment: <?php echo $config['fpx']['environment'] ?> Exchange ID: <?php echo $exchange ?> Merchant Code: <?php echo $_POST['MERCHANT_CODE'] ?></p>
                 </div>
                 <div class="content mb-2">
                     <p class="text-center"><?php echo $bank_description ?></p>
