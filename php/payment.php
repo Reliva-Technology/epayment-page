@@ -111,7 +111,7 @@ class Payment
             $json = json_encode($store);
             
             # append to file
-            file_put_contents(ROOT_DIR.'/json/request.json', $json);
+            file_put_contents(ROOT_DIR.'/json/'.$transaction_id.'-request.json', $json);
 
             # pass to FPX controller
             echo "<form id=\"myForm\" action=\"".$this->config['fpx']['url']."\" method=\"post\">";
@@ -208,7 +208,7 @@ class Payment
 
         # log POST data into JSON file
         $json = json_encode($input);
-        file_put_contents(ROOT_DIR.'/json/response.json', $json);
+        file_put_contents(ROOT_DIR.'/json/'.$transaction_id.'-response.json', $json);
 
         # post back to merchant callback url
         return $this->render($input,$url);
@@ -246,7 +246,7 @@ class Payment
 
         # log POST data into JSON file
         $json = json_encode($input);
-        file_put_contents(ROOT_DIR.'/json/callback.json', $json);
+        file_put_contents(ROOT_DIR.'/json/'.$transaction_id.'-callback.json', $json);
 
         # post back to merchant callback url using curl
         
