@@ -105,7 +105,7 @@
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Return URL</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CALLBACK_URL" value="https://fpx.reliva.com.my/action.php?id=response">
+                                        <input type="text" class="form-control" name="CALLBACK_URL" value="https://fpx.reliva.com.my/response.php">
                                     </div>
                                 </div>
 

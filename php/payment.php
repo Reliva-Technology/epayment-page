@@ -101,6 +101,18 @@ class Payment
                 'UPDATE_URL' => $update ?? NULL
             );
 
+            # store data in JSON file
+            $store = [
+                'fpx' => $fpx_data,
+                'transaction' => $transaction_data,
+                'transaction_extra' => $transaction_extra
+            ];
+
+            $json = json_encode($store);
+            
+            # append to file
+            file_put_contents('request.json', $json);
+
             # pass to FPX controller
             echo "<form id=\"myForm\" action=\"".$this->config['fpx']['url']."\" method=\"post\">";
             foreach ($fpx_data as $a => $b) {
@@ -194,6 +206,10 @@ class Payment
             exit();
         }
 
+        # log POST data into JSON file
+        $json = json_encode($input);
+        file_put_contents('response.json', $json);
+
         # post back to merchant callback url
         return $this->render($input,$url);
     }
@@ -227,6 +243,10 @@ class Payment
             echo json_encode($json);
             exit();
         }
+
+        # log POST data into JSON file
+        $json = json_encode($input);
+        file_put_contents('callback.json', $json);
 
         # post back to merchant callback url using curl
         
