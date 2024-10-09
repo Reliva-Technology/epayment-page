@@ -3,8 +3,9 @@
         "environment": "Staging",
         "exchange-id":
         {
-            "Ambank": "EX00021844",
-            "Bank Islam": "EX00023174"
+            "Ambank (Reliva)": "EX00021844",
+            "Bank Islam (Reliva)": "EX00023174",
+            "Sandbox (Reliva)": "EX00002877"
         },
         "merchant-code": 
         {

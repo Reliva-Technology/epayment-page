@@ -1,11 +1,6 @@
 <?php
 $content_type = $_SERVER["CONTENT_TYPE"];
 
-if(!$content_type){
-    http_response_code(400); // Bad Request
-    echo "Wrong content type";
-}
-
 $config_filename = 'config.json';
 
 if (!file_exists($config_filename)) {
@@ -15,30 +10,39 @@ if (!file_exists($config_filename)) {
 $config = json_decode(file_get_contents($config_filename), true);
 $payload = NULL;
 
-if($content_type == 'application/x-www-form-urlencoded'){
-    $data = $_POST;
-    if ($data !== null) {
-        foreach ($data as $key => $val) {
-            $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
+if($content_type){
+    if($content_type == 'application/x-www-form-urlencoded'){
+        $data = $_POST;
+        if ($data !== null) {
+            foreach ($data as $key => $val) {
+                $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
+            }
+        } else {
+            http_response_code(400); // Bad Request
+            echo "Invalid post data";
+            die;
+        }
+    } elseif($content_type == 'application/json'){
+        $data = file_get_contents('php://input');
+        if ($data !== null) {
+            foreach (json_decode($data) as $key => $val) {
+                $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
+            }
+        } else {
+            http_response_code(400); // Bad Request
+            echo "Invalid JSON data";
+            die;
         }
     } else {
         http_response_code(400); // Bad Request
-        echo "Invalid post data";
-    }
+        echo "Only application/x-www-form-urlencoded and application/json are accepted";
+        die;
+    } 
+} else {
+    http_response_code(400); // Bad Request
+    echo "Please set content type as application/x-www-form-urlencoded or application/json";
+    die;
 }
-
-if($content_type == 'application/json'){
-    $data = file_get_contents('php://input');
-    if ($data !== null) {
-        foreach (json_decode($data) as $key => $val) {
-            $payload .= "<input type='hidden' name='".$key."' value='".$val."'>";
-        }
-    } else {
-        http_response_code(400); // Bad Request
-        echo "Invalid JSON data";
-    }
-}
-
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
