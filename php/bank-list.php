@@ -9,4 +9,5 @@ $post = [
 ];
 
 $bank_list = $bank->get_bank_list($post);
-echo json_encode($bank_list,true);
+header('Content-Type: application/json');
+echo json_encode($bank_list, JSON_PRETTY_PRINT);
