@@ -23,8 +23,8 @@ class FPX
 		$cache = $this->config['cache'];
 		$exchange = $post['exchange'];
 
-		$file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '.json';
-		$be_file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '-be_message.json';
+		$file = ROOT_DIR.'/fpx/'.$exchange.'-'. $mode. '-'. $env. '.json';
+		$be_file = ROOT_DIR.'/fpx/'.$exchange.'-'. $mode. '-'. $env. '-be_message.json';
 		$current_time = time();
 		$expire_time = $cache * 60;
 
