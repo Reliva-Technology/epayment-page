@@ -61,6 +61,5 @@ class StringerController
 	    curl_close($ch);
 
 	    echo $body;
-		exit();
 	}
 }

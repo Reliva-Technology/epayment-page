@@ -135,6 +135,7 @@ class FPX
 					$bank_list[$key] = $key.$value;
 			}
 
+			# sort bank list alphabetically
 			natcasesort($bank_list);
 
 			# store bank list for drop down select
