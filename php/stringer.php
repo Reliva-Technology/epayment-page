@@ -24,6 +24,8 @@ class StringerController
 	        'AMOUNT' => $data['AMOUNT'],
 			'MERCHANT_CODE' => $data['MERCHANT_CODE']
 	    ];
+		print_r($data);
+		die();
 
 	    $header = null;
 
@@ -35,7 +37,7 @@ class StringerController
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		
+
         $response = curl_exec($ch);
         $body = null;
 	    // error
