@@ -24,7 +24,7 @@ class FPX
 		$exchange = $post['exchange'];
 
 		$file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '.json';
-		$be_file = ROOT_DIR.'/fpx/be_message.json';
+		$be_file = ROOT_DIR.'/fpx/'. $mode. '-'. $env. '-be_message.json';
 		$current_time = time();
 		$expire_time = $cache * 60;
 
@@ -115,8 +115,8 @@ class FPX
 				'MB2U0227' => 'Maybank2U',
 				'MBB0228' => 'Maybank2E',
 				'OCBC0229' => 'OCBC Bank',
-				'PBB0233' => 'Public Bank',
-				'PBB0234' => 'Public Bank Enterprise',
+				'PBB0233' => 'Public Bank PBe',
+				'PBB0234' => 'Public Bank PB enterprise',
 				'RHB0218' => 'RHB Bank',
 				'SCB0215' => 'Standard Chartered',
 				'SCB0216' => 'Standard Chartered',
