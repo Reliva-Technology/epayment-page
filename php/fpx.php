@@ -135,8 +135,33 @@ class FPX
 					$bank_list[$key] = $key.$value;
 			}
 
-			# sort bank list alphabetically
-			natcasesort($bank_list);
+			// Keep Affin banks at top
+			$affin_banks = array();
+			if (isset($bank_list['ABB0234'])) $affin_banks['ABB0234'] = $bank_list['ABB0234'];
+			if (isset($bank_list['ABB0233'])) $affin_banks['ABB0233'] = $bank_list['ABB0233'];
+			
+			// Keep AGRO banks and ABMB banks in specific order
+			$agro_abmb_banks = array();
+			if (isset($bank_list['ABMB0212'])) $agro_abmb_banks['ABMB0212'] = $bank_list['ABMB0212'];
+			if (isset($bank_list['ABMB0213'])) $agro_abmb_banks['ABMB0213'] = $bank_list['ABMB0213'];
+			if (isset($bank_list['AGRO01'])) $agro_abmb_banks['AGRO01'] = $bank_list['AGRO01'];
+			if (isset($bank_list['AGRO02'])) $agro_abmb_banks['AGRO02'] = $bank_list['AGRO02'];
+			
+			// Remove special ordered banks before sorting
+			unset(
+				$bank_list['ABB0234'], 
+				$bank_list['ABB0233'],
+				$bank_list['AGRO01'],
+				$bank_list['AGRO02'],
+				$bank_list['ABMB0212'],
+				$bank_list['ABMB0213']
+			);
+			
+			// Sort remaining banks
+			ksort($bank_list);
+			
+			// Merge all banks back in the desired order
+			$bank_list = $affin_banks + $agro_abmb_banks + $bank_list;
 
 			# store bank list for drop down select
 			file_put_contents($file, json_encode($bank_list));
@@ -272,4 +297,4 @@ class FPX
 		}
 	}
 
-}
+}	
