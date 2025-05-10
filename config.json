@@ -1,6 +1,6 @@
 {
     "fpx": {
-        "environment": "Staging",
+        "environment": "Production",
         "exchange-id":
         {
             "Ambank (Reliva)": "EX00021844",
@@ -15,7 +15,7 @@
             "sandbox": "Reliva Sandbox",
             "test": "DBKL Bank Islam",
         },
-        "default-exchange": "EX00021844",
+        "default-exchange": "EX00002640",
         "url": "https://epaymentstg.reliva.com.my/eps/request"
     },
     "stringer": {
