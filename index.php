@@ -33,6 +33,7 @@
                                         <select class="form-control" name="EXCHANGE_ID" id="exchange_id">
                                             <?php
                                             $config = json_decode(file_get_contents('config.json'), true);
+echo $config;
                                             foreach ($config['fpx']['exchange-id'] as $bank => $id) {
                                                 echo "<option value=\"$id\">$bank - $id</option>";
                                             }
