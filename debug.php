@@ -43,6 +43,7 @@
                                     <label for="merchant_code" class="col-lg-3 col-form-label">Payment Mode<span class="text-danger">*</span></label>
                                     <div class="col-lg-9">
                                         <input type="text" class="form-control" name="PAYMENT_MODE" value="fpx">
+                                        <span class="text-small">Accepted value: fpx, fpx1, migs</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -70,13 +71,6 @@
                                     <label for="description" class="col-lg-3 col-form-label">Kod Hasil</label>
                                     <div class="col-lg-9">
                                         <input type="text" class="form-control" name="KOD_HASIL" value="">
-                                    </div>
-                                </div>
-
-                                  <div class="form-group row">
-                                    <label for="description" class="col-lg-3 col-form-label">Process Code</label>
-                                    <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="PROCESS_CODE" value="">
                                     </div>
                                 </div>
 
