@@ -6,14 +6,14 @@
             "Ambank (Reliva)": "EX00021844",
             "Bank Islam (Reliva)": "EX00023174",
             "Sandbox (Reliva)": "EX00002877",
-            "Bank Islam (DBKL)": "EX00002640",
+            "Bank Islam (DBKL)": "EX00002640"
         },
         "merchant-code": 
         {
             "ambank": "Reliva Ambank",
             "bankislam": "Reliva Bank Islam",
             "sandbox": "Reliva Sandbox",
-            "test": "DBKL Bank Islam",
+            "test": "DBKL Bank Islam"
         },
         "default-exchange": "EX00002640",
         "url": "https://epaymentstg.reliva.com.my/eps/request"
