@@ -111,6 +111,8 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Debug</button>
+                                <input type="hidden" name="CALLBACK_URL" value="https://fpx.reliva.com.my/response.php">
+                                <input type="hidden" name="RETURN_URL" value="https://fpx.reliva.com.my/action.php?id=update">
                                 </form>
                             </div>
                         </div>
