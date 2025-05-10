@@ -126,6 +126,29 @@ switch ($id) {
 		
 	break;
 
+case 'debug':
+
+        $data = $_POST;
+        $url $url = 'confirm.php';
+
+        echo "<form id='autosubmit' action='".$url."' method='post'>";
+        if (is_array($data) || is_object($data))
+        {
+            foreach ($data as $key => $val) {
+                echo "<input type='hidden' name='".$key."' value='".$val."'>";
+            }
+        }
+        echo "</form>";
+        echo "
+        <script type='text/javascript'>
+            function submitForm() {
+                document.getElementById('autosubmit').submit();
+            }
+            window.onload = submitForm;
+        </script>";
+
+    break;
+
     default:
         $json = [
             'status' => '404',
