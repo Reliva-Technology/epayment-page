@@ -16,10 +16,10 @@
             "test": "DBKL Bank Islam"
         },
         "default-exchange": "EX00002640",
-        "url": "https://epaymentstg.reliva.com.my/eps/request"
+        "url": "https://epayment.dbkl.gov.my/eps/request"
     },
     "stringer": {
-        "url": "https://epaymentstg.reliva.com.my/stringer"
+        "url": "https://epayment.dbkl.gov.my/stringer"
     },
     "cache": "3000",
     "callback": "https://fpx.reliva.com.my/action.php?id=response"
