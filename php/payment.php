@@ -149,6 +149,7 @@ class Payment
             case 'fpx1':
                 $payment_mode = 'FPX (Corporate)';
                 break;
+            case 'migs':
             case 'mpgs':
                 $payment_mode = 'Kad Kredit/Debit';
                 break;
