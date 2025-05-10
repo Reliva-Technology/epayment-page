@@ -129,7 +129,7 @@ switch ($id) {
 case 'debug':
 
         $data = $_POST;
-        $url $url = 'confirm.php';
+        $url = 'confirm.php';
 
         echo "<form id='autosubmit' action='".$url."' method='post'>";
         if (is_array($data) || is_object($data))
