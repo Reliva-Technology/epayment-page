@@ -83,14 +83,14 @@
                                 <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Process Code</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="CALLBACK_URL" value="https://fpx.reliva.com.my/response.php">
+                                        <input type="text" class="form-control" name="PROCESS_CODE" value="">
                                     </div>
                                 </div>
 
                                   <div class="form-group row">
                                     <label for="description" class="col-lg-3 col-form-label">Module ID</label>
                                     <div class="col-lg-9">
-                                        <input type="text" class="form-control" name="MODULE_ID" value="https://fpx.reliva.com.my/response.php">
+                                        <input type="text" class="form-control" name="MODULE_ID" value="">
                                     </div>
                                 </div>
 
