@@ -70,9 +70,9 @@ if($content_type == 'application/json'){
                 <div class="content mb-2">
                     <p class="text-center">Pilih Perbankan Internet (Individu/Korporat) atau Kad Kredit/Debit</p>
                     <div class="list-group list-custom-small">
-                        <a href="#" class="payment-mode" data-payment-mode="fpx"><img src="images/fpx.svg" height="48" title="Personal Banking" alt="Personal Banking"><span class="mx-3">Perbankan Internet (Individu)</span><i class="fa fa-angle-right"></i></a>
-                        <a href="#" class="payment-mode" data-payment-mode="fpx1"><img src="images/fpx.svg" height="48" title="Corporate Banking" alt="Corporate Banking"><span class="mx-3">Perbankan Internet (Korporat)</span><i class="fa fa-angle-right"></i></a>
-                        <a href="#" class="payment-mode" data-payment-mode="mpgs"><img src="images/visa.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><img src="images/mastercard.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><span class="mx-3">Kad Kredit/Debit</span><i class="fa fa-angle-right"></i></a>
+                        <a href="javascript:void(0);" class="payment-mode" data-payment-mode="fpx"><img src="images/fpx.svg" height="48" title="Personal Banking" alt="Personal Banking"><span class="mx-3">Perbankan Internet (Individu)</span><i class="fa fa-angle-right"></i></a>
+                        <a href="javascript:void(0);" class="payment-mode" data-payment-mode="fpx1"><img src="images/fpx.svg" height="48" title="Corporate Banking" alt="Corporate Banking"><span class="mx-3">Perbankan Internet (Korporat)</span><i class="fa fa-angle-right"></i></a>
+                        <a href="javascript:void(0);" class="payment-mode" data-payment-mode="mpgs"><img src="images/visa.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><img src="images/mastercard.svg" height="48" title="Credit/Debit Card" alt="Credit/Debit Card"><span class="mx-3">Kad Kredit/Debit</span><i class="fa fa-angle-right"></i></a>
                     </div>
                     <dl class="mt-2">
                         <dt>Perbankan Individu</dt>
@@ -99,18 +99,33 @@ if($content_type == 'application/json'){
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
     <script src="scripts/jquery.min.js"></script>
     <script>
-        $('.payment-mode').each(function() {
-            $(this).click(function() {
-                let payment_mode = $(this).data('payment-mode');
-                $('#payment-mode').val(payment_mode);
-                $("#form-bayar").submit();
-            });
+    $(document).ready(function() {
+        // Handle Payment Mode Clicks
+        $('.payment-mode').on('click', function(e) {
+            e.preventDefault(); // Prevent page jump
+            
+            let payment_mode = $(this).data('payment-mode');
+            let $form = $("#form-bayar");
+            
+            // Explicitly set the action for payment
+            $form.attr('action', 'action.php?id=choose-bank');
+            $('#payment-mode').val(payment_mode);
+            
+            $form.submit();
         });
+    });
 
-        function cancel() {
-            document.getElementById("form-bayar").action = 'action.php?id=cancel-payment';
-            document.getElementById("form-bayar").submit();
-        }
-    </script>
+    // Handle Cancel Button
+    function cancel() {
+        // Prevent default behavior if called from an anchor
+        if (event) event.preventDefault();
+        
+        var form = document.getElementById("form-bayar");
+        
+        // Explicitly set the action for cancellation
+        form.action = 'action.php?id=cancel-payment';
+        form.submit();
+    }
+</script>
 </body>
 </html>
