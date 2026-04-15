@@ -100,29 +100,30 @@ if($content_type == 'application/json'){
     <script src="scripts/jquery.min.js"></script>
     <script>
     $(document).ready(function() {
-        // Handle Payment Mode Clicks
+        // Payment Mode Logic
         $('.payment-mode').on('click', function(e) {
-            e.preventDefault(); // Prevent page jump
+            e.preventDefault(); // Stop anchor default behavior
             
             let payment_mode = $(this).data('payment-mode');
             let $form = $("#form-bayar");
             
-            // Explicitly set the action for payment
+            // CRITICAL: Reset the action to choose-bank 
+            // in case the user clicked 'cancel' previously
             $form.attr('action', 'action.php?id=choose-bank');
-            $('#payment-mode').val(payment_mode);
             
+            $('#payment-mode').val(payment_mode);
             $form.submit();
         });
     });
 
-    // Handle Cancel Button
+    // Cancel Logic
     function cancel() {
-        // Prevent default behavior if called from an anchor
+        // Prevent default anchor behavior
         if (event) event.preventDefault();
         
         var form = document.getElementById("form-bayar");
         
-        // Explicitly set the action for cancellation
+        // Set the action to cancel-payment
         form.action = 'action.php?id=cancel-payment';
         form.submit();
     }
