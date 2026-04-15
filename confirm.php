@@ -50,8 +50,8 @@ if($mode == 'fpx'){
                         <dt>No. Telefon</dt><dd><?php echo $_POST['CUSTOMER_MOBILE'] ?></dd>
                         <dt>ID Transaksi</dt><dd><?php echo $_POST['ORDER_ID'] ?></dd>
                         <dt>Keterangan</dt><dd><?php echo $_POST['TXN_DESC'] ?></dd>
-                        <!-- <dt>Kaedah Pembayaran</dt><dd><?php echo ($_POST['payment_mode'] == 'migs') ? 'Kad Kredit/Debit' : 'Perbankan Internet - '.$_POST['BANK_NAME'] ?></dd> -->
-                        <dt>Kaedah Pembayaran</dt><dd><?php echo ($_POST['payment_mode'] == 'mpgs') ? 'Kad Kredit/Debit' : 'Perbankan Internet - '.$_POST['BANK_NAME'] ?></dd>
+                        <!-- <dt>Kaedah Pembayaran</dt><dd><?php echo ($_POST['payment_mode'] == 'migs') ? 'Kad Kredit/Debit (MIGS)' : 'Perbankan Internet - '.$_POST['BANK_NAME'] ?></dd> -->
+                        <dt>Kaedah Pembayaran</dt><dd><?php echo ($_POST['payment_mode'] == 'mpgs') ? 'Kad Kredit/Debit (MPGS)' : 'Perbankan Internet - '.$_POST['BANK_NAME'] ?></dd>
                         <dt>JUMLAH</dt><dd>RM <?php echo $_POST['AMOUNT'] ?></dd>
                     </dl>
                     <?php
