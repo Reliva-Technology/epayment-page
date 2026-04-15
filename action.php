@@ -39,6 +39,7 @@ switch ($id) {
         $url = NULL;
 
         if($data['payment_mode'] == 'migs') $url = 'confirm.php';
+	 	if($data['payment_mode'] == 'mpgs') $url = 'confirm.php';
         if($data['payment_mode'] == 'fpx') $url = '02-bank.php';
         if($data['payment_mode'] == 'fpx1') $url = '02-bank.php';
 
