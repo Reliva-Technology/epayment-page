@@ -66,8 +66,8 @@ if($mode == 'fpx'){
                         echo "</form>";
                     ?>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-2">
-                        <a href="#" onclick="submitForm()" class="btn btn-primary me-md-2">Bayar</a>
-                        <a href="#" onclick="cancel()" class="btn btn-danger">Batal</a>
+                        <a href="javascript:void(0);" onclick="handlePayment(event, 'process')" class="btn btn-primary me-md-2">Bayar</a>
+                        <a href="javascript:void(0);" onclick="handlePayment(event, 'cancel')" class="btn btn-danger">Batal</a>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -81,14 +81,20 @@ if($mode == 'fpx'){
     
     <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
     <script type='text/javascript'>
-        function submitForm() {
-            document.getElementById('confirm').submit();
+    function handlePayment(event, type) {
+        // Prevent any default anchor behavior
+        event.preventDefault();
+        
+        var form = document.getElementById('confirm');
+        
+        if (type === 'process') {
+            form.action = 'action.php?id=process-payment';
+        } else if (type === 'cancel') {
+            form.action = 'action.php?id=cancel-payment';
         }
-
-        function cancel() {
-            document.getElementById("confirm").action = 'action.php?id=cancel-payment';
-            submitForm();
-        }
-    </script>
+        
+        form.submit();
+    }
+</script>
 </body>
 </html>
